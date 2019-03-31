@@ -9,6 +9,7 @@ type StoreProps = {
             name: string
             score: number
         }[]
+        activeBoard: {}[]
     }
 }
 
@@ -18,15 +19,15 @@ type Players = {
     index: number
 }
 
-const BoardList: SFC<any> = ({ getPlayers, players }) => {
+const BoardList: SFC<any> = ({ getPlayers, players, scoreBoard }) => {
     useEffect(() => {
         getPlayers()
     }, [])
-
+    const boardData = scoreBoard.length > 0 ? scoreBoard : players
     return (
         <div>
             <ul>
-                {players.map(({ name, score }: Players, index: number) => (
+                {boardData.map(({ name, score }: Players, index: number) => (
                     <div key={index}>
                         <p>{name}</p>
                         <p>{score}</p>
@@ -37,7 +38,10 @@ const BoardList: SFC<any> = ({ getPlayers, players }) => {
     )
 }
 
-const mapStateToProps = ({ boards: { initialPlayers } }: StoreProps) => ({ players: initialPlayers })
+const mapStateToProps = ({ boards: { initialPlayers, activeBoard } }: StoreProps) => ({
+    players: initialPlayers,
+    scoreBoard: activeBoard,
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
     getPlayers: () => dispatch(fetchPlayers()),

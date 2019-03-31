@@ -2,7 +2,7 @@ import { FETCH_PLAYERS, UPDATE_SCORE } from '../actions/ActionTypes'
 
 type State = {
     initialPlayers: { name: string; score: number }[]
-    activeBoard: Array<Object>
+    activeBoard: { name: string; score: number }[]
 }
 
 type FetchAction = {
@@ -15,17 +15,23 @@ const initialState: State = {
     activeBoard: [],
 }
 
+const renderData = (name: string, score: number) => {
+    return {
+        name,
+        score,
+    }
+}
+
 export default function(state = initialState, action: FetchAction) {
     const { type, user } = action
     const reducer = {
         [FETCH_PLAYERS]: { ...state },
         [UPDATE_SCORE]: {
             ...state,
-            activeBoard: state.initialPlayers.forEach(({ name, score }) => {
-                name === user ? (score += 1) : score
+            activeBoard: state.initialPlayers.map(({ name, score }) => {
+                return name === user ? renderData(name, (score += 1)) : renderData(name, score)
             }),
         },
     }
-    console.log(reducer[type])
     return reducer[type] || state
 }

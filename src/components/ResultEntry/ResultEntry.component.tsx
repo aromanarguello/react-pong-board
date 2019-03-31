@@ -37,4 +37,5 @@ const connectedComponent = connect(
     mapDispatchToProps,
 )(ResultEntry)
 
+export { ResultEntry }
 export default connectedComponent
