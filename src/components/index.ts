@@ -1,3 +1,3 @@
-import BoardList from './BoardList/BoardList.component';
-
-export { BoardList };
+import BoardList from './BoardList/BoardList.component'
+import ResultEntry from './ResultEntry/ResultEntry.component'
+export { BoardList, ResultEntry }

@@ -1,1 +1,1 @@
-export { fetchPlayers } from './Board.action'
+export { fetchPlayers, updateScore } from './Board.action'

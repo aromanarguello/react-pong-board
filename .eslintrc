@@ -1,0 +1,39 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "airbnb-typescript/base",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "@typescript-eslint/indent": ["error", 4],
+        "no-console": [
+            "error",
+            {
+                "allow": ["error"]
+            }
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "object-curly-spacing": "off",
+        "allowTypedFunctionExpressions": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "typescript": {
+                "directory": "./src"
+            }
+        }
+    }
+}

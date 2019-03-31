@@ -4,25 +4,29 @@ import { fetchPlayers } from '../../redux/actions'
 import { Dispatch } from 'redux'
 
 type StoreProps = {
-    name: string
-    score: number
-}[]
+    boards: {
+        initialPlayers: {
+            name: string
+            score: number
+        }[]
+    }
+}
 
 type Players = {
     name: string
     score: number
+    index: number
 }
 
-const BoardList: SFC<any> = ({ getPlayers, players: { boards } }) => {
+const BoardList: SFC<any> = ({ getPlayers, players }) => {
     useEffect(() => {
         getPlayers()
     }, [])
 
-    console.log(boards)
     return (
         <div>
             <ul>
-                {boards.map(({ name, score }: Players, index: number) => (
+                {players.map(({ name, score }: Players, index: number) => (
                     <div key={index}>
                         <p>{name}</p>
                         <p>{score}</p>
@@ -33,7 +37,7 @@ const BoardList: SFC<any> = ({ getPlayers, players: { boards } }) => {
     )
 }
 
-const mapStateToProps = (state: StoreProps) => ({ players: state })
+const mapStateToProps = ({ boards: { initialPlayers } }: StoreProps) => ({ players: initialPlayers })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
     getPlayers: () => dispatch(fetchPlayers()),

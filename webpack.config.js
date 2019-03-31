@@ -1,7 +1,7 @@
-const path = require('path');
+const path = require('path')
 
 // Plugins
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -27,11 +27,11 @@ module.exports = {
              * and then transpiles them via babel.
              */
             {
-              test: /(\.js$|\.tsx?$)/,
-              exclude: /(node_modules|bower_components)/,
-              use: ['babel-loader'],
+                test: /(\.js$|\.tsx?$)/,
+                exclude: /(node_modules|bower_components)/,
+                use: ['babel-loader'],
             },
-      
+
             /**
              * All output '.js' files will have any sourcemaps re-processed by
              * source-map-loader.
@@ -44,4 +44,4 @@ module.exports = {
             template: './public/index.html',
         }),
     ],
-};
+}
