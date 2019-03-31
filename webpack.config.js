@@ -22,20 +22,26 @@ module.exports = {
     },
     module: {
         rules: [
-            // Typescript
+            /**
+             * Gets all .ts, .tsx, or .js files and runs them through eslint
+             * and then transpiles them via babel.
+             */
             {
-                test: /\.(ts|tsx)$/,
-                loader: 'awesome-typescript-loader',
+              test: /(\.js$|\.tsx?$)/,
+              exclude: /(node_modules|bower_components)/,
+              use: ['babel-loader'],
             },
-            {
-                test: /\.tsx?$/,
-                loader: 'babel-loader',
-            },
+      
+            /**
+             * All output '.js' files will have any sourcemaps re-processed by
+             * source-map-loader.
+             */
+            { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './public/index.html',
         }),
     ],
 };

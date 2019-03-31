@@ -1,0 +1,1 @@
+export const FETCH_PLAYERS: string = 'FETCH_PLAYERS'

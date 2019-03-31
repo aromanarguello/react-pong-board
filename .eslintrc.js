@@ -13,12 +13,25 @@ module.exports = {
         },
     },
     rules: {
-        // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-        // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/indent": ["error", 4],
+        "no-console": [
+          "error",
+          {
+            "allow": ["error"]
+          }
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "object-curly-spacing": 2
     },
     settings: {
-        react: {
-            version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
+        "react": {
+            "version": "detect"
         },
+          "import/resolver": {
+            "typescript": {
+              "directory": "./src"
+            }
+        }
     },
 };
