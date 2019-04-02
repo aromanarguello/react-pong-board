@@ -15,7 +15,6 @@ interface EventProps {
 
 const ResultEntry: SFC<ParentProp> = ({ label, updateScore }) => {
     const [input, setInput] = useState('')
-    console.log(input)
     return (
         <div>
             <p>{label}</p>

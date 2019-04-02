@@ -1,4 +1,10 @@
-test('something', () => {
-    const add = (x: number, y: number) => x + y
-    expect(add(2, 2)).toBe(4)
+import React from 'react'
+import { ResultEntry } from './ResultEntry.component'
+import { render } from 'react-testing-library'
+
+test('test result entry receives props', () => {
+    const {
+        container: { innerHTML },
+    } = render(<ResultEntry label="alex" updateScore={() => console.log()} />)
+    expect(innerHTML).toMatch('alex')
 })

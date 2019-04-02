@@ -23,6 +23,7 @@ const BoardList: SFC<any> = ({ getPlayers, players, scoreBoard }) => {
     useEffect(() => {
         getPlayers()
     }, [])
+
     const boardData = scoreBoard.length > 0 ? scoreBoard : players
     return (
         <div>

@@ -8,9 +8,22 @@
                 "targets": {
                     "browsers": [">0.25%"]
                 },
-                "modules": false
+                "modules": false,
+                "useBuiltIns": "usage"
             }
         ]
     ],
-    "plugins": ["@babel/proposal-class-properties", "@babel/proposal-object-rest-spread"]
+    "plugins": ["@babel/proposal-class-properties", "@babel/proposal-object-rest-spread"],
+    "env": {
+        "test": {
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "modules": "commonjs"
+                    }
+                ]
+            ]
+        }
+    }
 }
